@@ -1,4 +1,4 @@
-[submodule "uniswap-contracts"]
-	path = uniswap-contracts
+[submodule "uniswap/contracts"]
+	path = uniswap/contracts
 	url = git@github.com:Uniswap/contracts-vyper.git
 	branch = master
