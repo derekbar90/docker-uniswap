@@ -1,0 +1,34 @@
+version: "3.0"
+
+services:
+
+  # service container
+  node:
+    image: trufflesuite/ganache-cli:latest
+    networks:
+      - backend
+    ports:
+      - "8545:8545"
+    volumes:
+      - ./ganache/data:/ganache_vol
+    entrypoint:
+      - node
+      - /app/ganache-core.docker.cli.js
+      - --deterministic
+      - --db=/ganache_vol
+      - --mnemonic
+      - ${WALLET_SEED}
+      - --networkId
+      - '5777'
+      - --hostname
+      - '0.0.0.0'
+      - --debug
+
+
+volumes:
+  ganache_vol:
+    driver: local
+
+networks:
+  backend:
+    driver: bridge
